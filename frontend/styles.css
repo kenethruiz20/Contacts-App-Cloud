@@ -1,152 +1,103 @@
-/* General Resets */
-* {
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
 }
 
-body {
-    background-color: #f5f7fa;
-    color: #333;
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-/* Header */
-header {
-    background-color: #1E88E5;
+header, footer {
+    background-color: #007bff;
     color: white;
-    padding: 1.5rem 0;
     text-align: center;
+    padding: 1rem 0;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-/* Container */
-.container {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Card */
-.card {
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
     background-color: white;
-    margin-top: 2rem;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Headings */
-.card h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
-    color: #444;
+.contact-form {
+    margin-bottom: 20px;
 }
 
-/* Form Group */
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
+.contact-form h2 {
+    margin-bottom: 10px;
+    color: #007bff;
 }
 
-.form-group input {
-    padding: 0.8rem;
-    border-radius: 6px;
+.contact-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
+    border-radius: 5px;
 }
 
-.form-group input:focus {
-    outline: none;
-    border-color: #1E88E5;
-}
-
-/* Buttons */
-.btn {
-    padding: 0.8rem 1.5rem;
+.contact-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 500;
+    border-radius: 5px;
+    width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.btn.primary {
-    background-color: #1E88E5;
-    color: white;
+.contact-form button:hover {
+    background-color: #0056b3;
 }
 
-.btn.primary:hover {
-    background-color: #1565C0;
+.contact-list-section ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-/* Divider */
-.divider {
-    height: 1px;
-    background-color: #ddd;
-    margin: 2rem 0;
-}
-
-/* Contact List */
-.contact-list {
-    list-style: none;
-}
-
-.contact-list li {
-    background-color: #F9FAFC;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: 6px;
+.contact-list-section li {
+    padding: 15px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
-.contact-list li span {
-    font-size: 1rem;
-    color: #444;
-    flex: 1;
+.contact-list-section li:hover {
+    transform: translateY(-5px);
 }
 
-.contact-list li button {
-    background-color: #E53935;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions .btn {
+    padding: 5px 10px;
     font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
 }
 
-.contact-list li button:hover {
-    background-color: #C62828;
+.actions .btn-outline-secondary i,
+.actions .btn-outline-danger i {
+    margin-right: 5px;
 }
 
-/* Footer */
 footer {
-    background-color: #1E88E5;
+    background-color: #007bff;
     color: white;
-    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
     text-align: center;
-    margin-top: 4rem;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
+    padding: 10px 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
