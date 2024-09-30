@@ -91,6 +91,26 @@ main {
     margin-right: 5px;
 }
 
+/* Modal styles */
+.modal-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal-footer .btn {
+    padding: 8px 20px;
+}
+
+.modal-footer .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
 footer {
     background-color: #007bff;
     color: white;

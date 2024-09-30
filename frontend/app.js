@@ -1,34 +1,40 @@
 const API_URL = 'http://localhost:5001/contacts';
 
+let contacts = [];
+
 async function fetchContacts() {
     try {
         const response = await fetch(API_URL);
         if (!response.ok) {
             throw new Error('Failed to fetch contacts');
         }
-        const contacts = await response.json();
-        const contactList = document.getElementById('contact-list');
-        contactList.innerHTML = '';
-
-        contacts.forEach(contact => {
-            const li = document.createElement('li');
-            li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-            li.innerHTML = `
-                <span>${contact.name} - ${contact.phone} (${contact.email})</span>
-                <div class="actions">
-                    <button class="btn btn-sm btn-outline-secondary" onclick="openEditModal(${contact.id}, '${contact.name}', '${contact.phone}', '${contact.email}')">
-                        <i class="fas fa-pencil-alt"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-danger ms-2" onclick="openDeleteModal(${contact.id})">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            `;
-            contactList.appendChild(li);
-        });
+        contacts = await response.json();
+        displayContacts(contacts);
     } catch (error) {
         console.error('Error fetching contacts:', error);
     }
+}
+
+function displayContacts(contactsToDisplay) {
+    const contactList = document.getElementById('contact-list');
+    contactList.innerHTML = '';
+
+    contactsToDisplay.forEach(contact => {
+        const li = document.createElement('li');
+        li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+        li.innerHTML = `
+            <span>${contact.name} - ${contact.phone} (${contact.email})</span>
+            <div class="actions">
+                <button class="btn btn-sm btn-outline-secondary" onclick="openEditModal(${contact.id}, '${contact.name}', '${contact.phone}', '${contact.email}')">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-danger ms-2" onclick="openDeleteModal(${contact.id})">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `;
+        contactList.appendChild(li);
+    });
 }
 
 async function addContact() {
@@ -36,8 +42,15 @@ async function addContact() {
     const phone = document.getElementById('contact-phone').value;
     const email = document.getElementById('contact-email').value;
 
-    if (!name || !phone) {
-        alert('Name and phone are required!');
+    // Validación de campos
+    if (!name || !phone || !validatePhone(phone) || !validateEmail(email)) {
+        alert('Por favor, ingresa un nombre, número de teléfono válido y un email válido.');
+        return;
+    }
+
+    // Verificar duplicados
+    if (contacts.some(contact => contact.phone === phone || contact.email === email)) {
+        alert('Este contacto ya existe con ese número o correo electrónico.');
         return;
     }
 
@@ -51,9 +64,10 @@ async function addContact() {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to add contact');
+            throw new Error('No se pudo añadir el contacto.');
         }
 
+        // Limpiar campos
         document.getElementById('contact-name').value = '';
         document.getElementById('contact-phone').value = '';
         document.getElementById('contact-email').value = '';
@@ -80,8 +94,9 @@ async function saveEditContact() {
     const phone = document.getElementById('edit-contact-phone').value;
     const email = document.getElementById('edit-contact-email').value;
 
-    if (!name || !phone) {
-        alert('Name and phone are required!');
+    // Validación de campos
+    if (!name || !phone || !validatePhone(phone) || !validateEmail(email)) {
+        alert('Por favor, ingresa un nombre, número de teléfono válido y un email válido.');
         return;
     }
 
@@ -95,7 +110,7 @@ async function saveEditContact() {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to update contact');
+            throw new Error('No se pudo actualizar el contacto.');
         }
 
         const editModal = bootstrap.Modal.getInstance(document.getElementById('editContactModal'));
@@ -123,7 +138,7 @@ async function confirmDeleteContact() {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to delete contact');
+            throw new Error('No se pudo eliminar el contacto.');
         }
 
         const deleteModal = bootstrap.Modal.getInstance(document.getElementById('deleteContactModal'));
@@ -133,6 +148,29 @@ async function confirmDeleteContact() {
     } catch (error) {
         console.error('Error deleting contact:', error);
     }
+}
+
+// Búsqueda de contactos
+function filterContacts() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const filteredContacts = contacts.filter(contact =>
+        contact.name.toLowerCase().includes(searchTerm) ||
+        contact.phone.toLowerCase().includes(searchTerm) ||
+        contact.email.toLowerCase().includes(searchTerm)
+    );
+    displayContacts(filteredContacts);
+}
+
+// Validación de número de teléfono
+function validatePhone(phone) {
+    const phoneRegex = /^[0-9]{7,15}$/;
+    return phoneRegex.test(phone);
+}
+
+// Validación de email
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
 window.onload = fetchContacts;
