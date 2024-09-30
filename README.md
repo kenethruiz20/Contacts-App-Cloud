@@ -87,17 +87,3 @@ Cada contacto también tiene un ícono de basurero que, al hacer clic en él, el
 
 Este proyecto está diseñado de manera modular, permitiéndome personalizar fácilmente tanto el frontend como el backend según las necesidades de cualquier otro proyecto o cliente. Además, la contenedorización con Docker hace que el despliegue sea rápido y consistente.
 
-## Próximos Pasos
-
-En futuras versiones, planeo agregar más características avanzadas como:
-- **Autenticación de Usuarios**: Implementar un sistema de autenticación para manejar diferentes usuarios y sus contactos.
-- **Búsqueda**: Incluir una barra de búsqueda para filtrar los contactos por nombre o número de teléfono.
-- **Mejoras en la Interfaz de Usuario**: Hacer ajustes adicionales para mejorar aún más la experiencia de usuario.
-
-## Contribuciones
-
-Si te interesa contribuir a este proyecto, no dudes en hacer un `fork` y enviar tus cambios a través de un `pull request`. Todas las contribuciones son bienvenidas.
-
-## Licencia
-
-Este proyecto está bajo la licencia MIT.
