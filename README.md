@@ -1,6 +1,4 @@
-A continuación te proporciono un **README.md** completo y detallado para tu proyecto de gestión de contactos utilizando Flask, MySQL, Docker, y Bootstrap:
 
----
 
 # Contact Manager Application
 
@@ -170,4 +168,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-This **README** covers all the essential aspects of your project: from setup and configuration to usage and customization. Feel free to expand it as the project grows!
