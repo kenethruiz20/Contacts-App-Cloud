@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Contact Manager</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card">
+                <h2>Add a New Contact</h2>
+                <div class="form-group">
+                    <input type="text" id="contact-name" placeholder="Enter Contact Name" required>
+                    <input type="text" id="contact-phone" placeholder="Enter Contact Phone" required>
+                    <input type="email" id="contact-email" placeholder="Enter Contact Email (Optional)">
+                    <button type="button" class="btn primary" onclick="addContact()">Add Contact</button>
+                </div>
+
+                <div class="divider"></div>
+
+                <h2>Contacts List</h2>
+                <ul id="contact-list" class="contact-list"></ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Contact Manager. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
